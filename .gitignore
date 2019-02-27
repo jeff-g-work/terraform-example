@@ -1,0 +1,8 @@
+# terraform init files
+.terraform
+*/.terraform/**
+*/*.tfstate
+**/*.tfstate.backup
+
+*/.idea
+.DS_Store
