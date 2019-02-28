@@ -1,8 +1,3 @@
-provider "google" {
-  project = "${var.project}"
-  region  = "${var.region}"
-  credentials = "${file("${var.GCLOUD_KEYFILE_JSON}")}"
-}
 
 resource "google_service_account" "tf-example" {
   account_id   = "tf-example"
