@@ -1,3 +1,7 @@
+provider "google" {
+  project = "${var.project}"
+  region  = "${var.region}"
+}
 
 resource "google_service_account" "tf-example" {
   account_id   = "tf-example"
