@@ -41,7 +41,6 @@ resource "kubernetes_secret" "tf-example-credentials" {
   }
 
   data {
-//    credentials.json = "${base64decode(google_service_account_key.tf-example-credentials.private_key)}"
-    credentials.json = "${var.cred}"
+    credentials.json = "${base64decode(google_service_account_key.tf-example-credentials.private_key)}"
   }
 }
