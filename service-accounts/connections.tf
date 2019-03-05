@@ -4,6 +4,8 @@ provider "google" {
   region  = "${var.region}"
 }
 
+variable "cred" {}
+
 resource "google_service_account" "tf-example" {
   account_id   = "tf-example"
   display_name = "Terraform example"
