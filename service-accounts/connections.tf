@@ -24,9 +24,9 @@ output "secret-key-name" {
   value = "tf-example-credentials"
 }
 
-resource "kubernetes_secret" "tf-example-creds" {
+resource "kubernetes_secret" "tf-example-credentials" {
   metadata = {
-    name = "tf-example-creds"
+    name = "tf-example-credentials"
   }
 
   data {
