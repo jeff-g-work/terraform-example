@@ -15,13 +15,13 @@ resource "google_service_account_key" "tf-example-credentials" {
   service_account_id = "${google_service_account.tf-example.name}"
 }
 
-resource "google_project_iam_binding" "user-balances" {
+resource "google_project_iam_binding" "tf-example" {
   role    = "roles/cloudsql.client"
   members = ["serviceAccount:${google_service_account.tf-example.email}"]
 }
 
 output "secret-key-name" {
-  value = "user-balances-credentials"
+  value = "tf-example-credentials"
 }
 
 resource "kubernetes_secret" "tf-example-creds" {
