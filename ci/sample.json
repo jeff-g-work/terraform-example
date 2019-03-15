@@ -1,8 +1,4 @@
 {
-  "name": [
-    "head_name"
-  ],
-  "value": [
-    "none"
-  ]
+  "name": "head_name",
+  "value": "none"
 }
