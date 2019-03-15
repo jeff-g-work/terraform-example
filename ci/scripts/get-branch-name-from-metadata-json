@@ -1,4 +1,23 @@
 #!/bin/sh
 
 
-echo "tf-branch-pipeline"
+set -euo pipefail
+
+METADATA_JSON="${1:-}"
+
+alias errcho='>&2 echo'
+
+# Abort if `metadata.json` does not exist.
+if [ ! -f ${METADATA_JSON} ]; then
+  errcho 'error: Pull request metadata.json does not exist!'
+  exit 1
+fi
+
+errcho "metadata contents:"
+cat "${METADATA_JSON}" >&2
+
+errcho "querying branch name from the pull request metadata"
+BRANCH_NAME=$(jq '.[] | select(.name=="head_name") | .value' < "${METADATA_JSON}" | tr -d \") # jq -r doesn't work in $()
+errcho "found branch name '${BRANCH_NAME}'"
+
+echo "${BRANCH_NAME}"
