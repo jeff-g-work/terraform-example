@@ -24,6 +24,6 @@ run:
         exit 1
       fi
 
-      BRANCH_NAME=$(./ci-config-sample/ci/scripts/get-branch-name-from-metadata-json ./ci-config-sample/ci/sample.json)
+      BRANCH_NAME=$(./ci-config-sample/ci/scripts/get-branch-name-from-metadata-json ci-config-sample/ci/sample.json)
 
       ./ci-config-sample/ci/scripts/gen-per-branch-names "${BRANCH_NAME}" metadata
