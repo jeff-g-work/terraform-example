@@ -2,6 +2,7 @@
 jobs:
   - name: job-hello-world
     public: true
+    trigger: true
     plan:
       - task: hello-world
         config:
@@ -11,4 +12,4 @@ jobs:
             source: {repository: busybox}
           run:
             path: echo
-            args: [hello world]
+            args: [hello world!]
