@@ -2,6 +2,7 @@
 jobs:
   - name: job-hello-world
     public: true
+    trigger: true
     plan:
       - task: hello-world
         config:
