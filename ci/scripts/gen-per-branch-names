@@ -1,0 +1,27 @@
+#!/bin/sh
+
+set -euo pipefail
+
+BRANCH_NAME="${1:-}"
+OUTPUT_DIR="${2:-}"
+
+if [ -z "${BRANCH_NAME}" ]; then
+  echo 'error: branch name not specified!'
+  echo "usage: ./$(basename "$0") <branch-name> <output-dir>"
+  exit 1
+elif [ -z "${OUTPUT_DIR}" ]; then
+  echo 'error: Output directory not specified!'
+  echo "usage: ./$(basename "$0") <branch-name> <output-dir>"
+  exit 1
+fi
+
+echo "creating per-branch metadata directory '${OUTPUT_DIR}'..."
+mkdir -p "${OUTPUT_DIR}"
+
+echo "creating '${OUTPUT_DIR}/namespace'..."
+echo "mothership-${BRANCH_NAME}" | tr '[:upper:]' '[:lower:]' | cut -c -63 > "${OUTPUT_DIR}/namespace"
+
+echo "creating '${OUTPUT_DIR}/mothership-release'..."
+cat "${OUTPUT_DIR}/namespace" | cut -c -53 > "${OUTPUT_DIR}/mothership-release"
+
+sed -i 's/[[:punct:]]/-/g' "${OUTPUT_DIR}"/*

@@ -1,0 +1,29 @@
+---
+platform: linux
+
+image_resource:
+  type: docker-image
+  source:
+    repository: linkyard/docker-helm
+
+inputs:
+  - name: source
+  - name: ci-config
+
+outputs:
+  - name: metadata
+
+run:
+  path: /bin/sh
+  args:
+    - -exc
+    - |
+      # Install jq. TODO: add jq to the docker image
+      if ! apk add --update jq; then
+        echo 'error: Failed to install jq!'
+        exit 1
+      fi
+
+      BRANCH_NAME=$(./ci-config/ci/scripts/get-branch-name-from-metadata-json source/.git/resource/metadata.json)
+
+      ./ci-config/ci/scripts/gen-per-branch-names "${BRANCH_NAME}" metadata
