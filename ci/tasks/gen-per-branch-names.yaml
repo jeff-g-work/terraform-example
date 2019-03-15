@@ -8,7 +8,7 @@ image_resource:
 
 inputs:
   - name: source
-  - name: ci-config
+  - name: ci-config-sample
 
 outputs:
   - name: metadata
@@ -24,6 +24,6 @@ run:
         exit 1
       fi
 
-      BRANCH_NAME=$(./ci-config/ci/scripts/get-branch-name-from-metadata-json source/.git/resource/metadata.json)
+      BRANCH_NAME=$(./ci-config-sample/ci/scripts/get-branch-name-from-metadata-json source/.git/resource/metadata.json)
 
       ./ci-config/ci/scripts/gen-per-branch-names "${BRANCH_NAME}" metadata
