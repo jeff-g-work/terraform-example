@@ -17,7 +17,8 @@ errcho "metadata contents:"
 cat "${METADATA_JSON}" >&2
 
 errcho "querying branch name from the pull request metadata"
-BRANCH_NAME=$(jq '.[] | select(.name=="head_name") | .value' < "${METADATA_JSON}" | tr -d \") # jq -r doesn't work in $()
+# BRANCH_NAME=$(jq '.[] | select(.name=="head_name") | .value' < "${METADATA_JSON}" | tr -d \") # jq -r doesn't work in $()
+BRANCH_NAME=$(jq '.name')
 errcho "found branch name '${BRANCH_NAME}'"
 
 echo "${BRANCH_NAME}"
