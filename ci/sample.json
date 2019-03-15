@@ -1,3 +1,8 @@
 {
-  "name": "tf-branch"
+  "name": [
+    "head_name"
+  ],
+  "value": [
+    "none"
+  ]
 }
