@@ -9,7 +9,7 @@ alias errcho='>&2 echo'
 
 # Abort if `metadata.json` does not exist.
 if [ ! -f ${METADATA_JSON} ]; then
-  errcho 'error: Pull request metadata.json does not exist!'
+  errcho 'error: Pull request metadata.json does not exist! ${METADATA_JSON}'
   exit 1
 fi
 
