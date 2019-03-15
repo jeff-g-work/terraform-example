@@ -1,6 +1,4 @@
 #!/bin/sh
 
 
-BRANCH_NAME="tf-branch-pipeline"
-
-echo "${BRANCH_NAME}"
+echo "tf-branch-pipeline"
